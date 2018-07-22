@@ -16,7 +16,7 @@ var allFeeds = [
         url: 'http://feeds.feedburner.com/CssTricks'
     }, {
         name: 'HTML5 Rocks',
-        url: ''
+        url: 'http://feeds.feedburner.com/html5rocks'
     }, {
         name: 'Linear Digressions',
         url: 'http://feeds.feedburner.com/udacity-linear-digressions'
@@ -29,7 +29,7 @@ var allFeeds = [
  */
 function init() {
     // Load the first feed we've defined (index of 0).
-    loadFeed(0);
+    // loadFeed(0);
 }
 
 /* This function performs everything necessary to load a
