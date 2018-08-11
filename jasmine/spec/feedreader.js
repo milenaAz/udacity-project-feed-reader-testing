@@ -9,6 +9,9 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function() {
+
+    /********* Test Suite for RSS Feeds *********/
+
     describe('RSS Feeds', function() {
         /* This test make sure that the
          * allFeeds variable has been defined and that it is not
@@ -42,6 +45,8 @@ $(function() {
         });
     });
 
+    /********* Test Suite for The menu *********/
+
     describe("The menu", function() {
         const body = document.querySelector('body');
         const menuHidden = document.querySelector('.menu-hidden');
@@ -54,7 +59,7 @@ $(function() {
             expect(body.className).toContain(menuHidden.className);
         });
 
-         /*This test ensures that the menu visibility when the menu icon is clicked.
+         /*This test ensures that the menu visibility changes when the menu icon is clicked.
           */
         it('changes the visibility', function() {
             menuIcon.click();
@@ -64,33 +69,39 @@ $(function() {
         });
     });
 
+    /********* Test Suite for Initial Entries *********/
+
     describe('Initial Entries', function() {
-        /* This test ensures that when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         */
         beforeEach(function(done) {
             loadFeed(0, done);
         }); 
 
+        /* This test ensures that when the loadFeed
+         * function is called and completes its work, there is at least
+         * a single .entry element within the .feed container.
+         */
         it('have at least a single .entry element', function() {
             expect($('.feed .entry').length).toBeGreaterThan(0);
         });
     });
 
+    /********* Test Suite for New Feed Selection *********/
+
     describe('New Feed Selection', function() {
-        /* This test ensures that when a new feed is loaded
-         * by the loadFeed function the content is changing.
-         */
         let initialFeed;
+
         beforeEach(function(done) {
             loadFeed(0, done);
             initialFeed = $('.feed').html(); //get current feed
             loadFeed(1, done); //load new feed
         }); 
-
+        
+        /* This test ensures that when a new feed is loaded
+         * by the loadFeed function the content is changing.
+         */
         it('is changing after new feed is loaded', function() {
             expect(expect($('.feed').html()).not.toEqual(initialFeed));
         });
     });
+
 }());
