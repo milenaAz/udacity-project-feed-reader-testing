@@ -23,3 +23,5 @@ Test was writen with the help of JavaScript framework Jasmine.
 	* have at least a single entry element
 * New Feed Selection
 	* is changing after new feed is loaded
+
+*Jasmine spec file is located in /jasmine/spec/feedreader.js*
