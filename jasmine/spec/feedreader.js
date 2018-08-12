@@ -48,24 +48,22 @@ $(function() {
     /********* Test Suite for The menu *********/
 
     describe("The menu", function() {
-        const body = document.querySelector('body');
-        const menuHidden = document.querySelector('.menu-hidden');
         const menuIcon = document.querySelector('.menu-icon-link');
         
         /* This test ensures that the menu element is
          * hidden by default.
          */
         it('is hidden by default', function() {
-            expect(body.className).toContain(menuHidden.className);
+            expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
          /*This test ensures that the menu visibility changes when the menu icon is clicked.
           */
         it('changes the visibility', function() {
             menuIcon.click();
-            expect(body.className).not.toContain(menuHidden.className);
+            expect($('body').hasClass('menu-hidden')).toBe(false);
             menuIcon.click();
-            expect(body.className).toContain(menuHidden.className);        
+            expect($('body').hasClass('menu-hidden')).toBe(true);        
         });
     });
 
@@ -91,9 +89,10 @@ $(function() {
         let initialFeed;
 
         beforeEach(function(done) {
-            loadFeed(0, done);
-            initialFeed = $('.feed').html(); //get current feed
-            loadFeed(1, done); //load new feed
+            loadFeed(0, function() {
+                initialFeed = $('.feed').html(); //get current feed
+                loadFeed(1, done); //load new feed
+            }); 
         }); 
         
         /* This test ensures that when a new feed is loaded
